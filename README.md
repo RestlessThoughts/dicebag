@@ -18,13 +18,13 @@ print($dicebag->flipCoin());
 ```
 # Usage
 mt_rand is used for the internal randomness function so you can seed it using mt_srand(seed);
-### dicebag->flipCoin()
+### $dicebag->flipCoin()
 Flip a coin.
 
 **RETURNS**
 * `result` (boolean) - true or false (50% chance).
 
-### dicebag->rollDice($num_dice, $num_sides, $modifier)
+### $dicebag->rollDice($num_dice, $num_sides, $modifier)
 Roll a number of dice, D&D-style. An example would be rolling 3d6+2. Returns the sum of the resulting roll.
 ```
 $dicebag->rollDice(3,6,2);
@@ -38,7 +38,7 @@ $dicebag->rollDice(3,6,2);
 **RETURNS**
 * `result` (number) - Sum of rolled dice plus modifier.
 
-### dicebag->rollSpecialDice($numOfDice, $numOfResults, $advantage, $numOfSides)
+### $dicebag->rollSpecialDice($numOfDice, $numOfResults, $advantage, $numOfSides)
 Roll a number of dice and choose one (or more) of the highest (advantage) or lowest (disadvantage) results. Returns the sum of the relevant dice rolls.
 
 **PARAMETERS**
@@ -50,7 +50,7 @@ Roll a number of dice and choose one (or more) of the highest (advantage) or low
 **RETURNS**
 * `result` (number) - Sum of the highest (advantage) or lowest (disadvantage) dice rolls.
 
-### dicebag->rollCustomDice(array $sides, $numOfDice, $returnRolls)
+### $dicebag->rollCustomDice(array $sides, $numOfDice, $returnRolls)
 Roll custom dice. The dice can have sides with different weights and different values. So it's really rolling weighted dice.
 
 **PARAMETERS**
@@ -61,7 +61,7 @@ Roll custom dice. The dice can have sides with different weights and different v
 **RETURNS**
 * `value` (any) - The sum of the values as specified in array `sides` OR an `array` containing the value and the rolls in this format: `[value, [roll1, roll2,...]]`
 
-### dicebag->createBag($id, $num_success, $num_fail, $reset_on_success)
+### $dicebag->createBag($id, $num_success, $num_fail, $reset_on_success)
 Create a marble bag of green (success) and red (fails) 'marbles'. This allows you to, for example, make an unlikely event more and more likely the more fails are accumulated.
 
 **PARAMETERS**
@@ -70,7 +70,7 @@ Create a marble bag of green (success) and red (fails) 'marbles'. This allows yo
 * `num_fails` (number) -  The number of fails marbles in the bag.
 * `reset_on_success` (boolean) - Whether or not the bag should reset when a successful result is drawn. If false or nil the bag will reset when all marbles have been drawn.
 
-### dicebag->bagDraw($id)
+### $dicebag->bagDraw($id)
 Draw a marble from a previously created bag.
 
 **PARAMETERS**
@@ -79,13 +79,13 @@ Draw a marble from a previously created bag.
 **RETURNS**
 * `result` (boolean)
 
-### dicebag->bagReset($id)
+### $dicebag->bagReset($id)
 Manually reset a marble bag. Will also be called when a marble bag is empty, or a success is drawn in a bag where `reset_on_success` is true.
 
 **PARAMETERS**
 * `id` (string, number, hash) - A unique identifier for the marble bag.
 
-### dicebag->createTable($id, $rollable_table)
+### $dicebag->createTable($id, $rollable_table)
 Create a rollable table. This is similar to a marble bag, except each entry can have a different weight, and can return any value (not just a boolean).
 
 **PARAMETERS**
@@ -97,7 +97,7 @@ Array `rollable_table` has the format: `[[weight1, value1, reset_on_roll1], [wei
 * `value` (any) - The value to be returned if drawn.
 * `reset_on_roll` (boolean) - Whether or not the table should be reset when this value is drawn. If all of these are false, the table will reset when all values have been drawn.
 
-### dicebag->tableRoll($id)
+### $dicebag->tableRoll($id)
 Draw a random value from the rollable table created in dicebag->createTable(). The value will be removed from the table. If `reset_on_roll` is true, the table will reset. Otherwise, the table will reset when all values are drawn.
 
 **PARAMETERS**
@@ -106,7 +106,7 @@ Draw a random value from the rollable table created in dicebag->createTable(). T
 **RETURNS**
 * `value` (any) - The value specified in dicebag.table_create.
 
-### dicebag->tableReset($id)
+### $dicebag->tableReset($id)
 Manually reset a rollable table. Will also be called when the rollable table is empty, or a drawn value where `reset_on_roll` is true.
 
 **PARAMETERS**
