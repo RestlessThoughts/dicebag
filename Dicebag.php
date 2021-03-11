@@ -6,6 +6,12 @@ class Dicebag
 	
 	public $tables;
 
+	// Flip a coin: 50% chance of returning true or false
+	public function flipCoin()
+	{
+		return mt_rand(0,1) ? true : false;
+	}
+
 	// D&D style dice roll, for example 3d6+2. Returns resulting roll value.
 	public function rollDice($num_dice=1, $num_sides=6, $modifier=0)
 	{
@@ -153,7 +159,7 @@ class Dicebag
 	Roll a value from a rollable table. 
 	Returns the value specified in the table.
 	*/
-	public function tableRoll($id)
+	public function tableRoll($id=1)
 	{
 		if (!isset($this->tables[$id]))
 			return false;
